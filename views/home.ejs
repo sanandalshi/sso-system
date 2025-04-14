@@ -1,0 +1,194 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Application - Home</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    h1 {
+      color: #2c3e50;
+      margin: 0;
+    }
+    .btn {
+      display: inline-block;
+      background: #3498db;
+      color: #fff;
+      padding: 8px 15px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .btn:hover {
+      background: #2980b9;
+    }
+    .content {
+      margin-top: 20px;
+    }
+    .feature {
+      margin-bottom: 20px;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Client Application</h1>
+      <div>
+        <% if (user) { %>
+          <a href="/dashboard" class="btn">Dashboard</a>
+          <a href="/logout" class="btn" style="background-color: #e74c3c;">Logout</a>
+        <% } else { %>
+          <a href="/login" class="btn">Login with SSO</a>
+        <% } %>
+      </div>
+    </header>
+    
+    <div class="content">
+      <h2>Welcome to our Application</h2>
+      <p>This is a demo application that uses Single Sign-On (SSO) for authentication.</p>
+      
+      <% if (!user) { %>
+        <p>Please log in to access your dashboard and other features.</p>
+      <% } else { %>
+        <p>You are logged in. Visit your dashboard to see your personalized content.</p>
+      <% } %>
+      
+      <div class="feature">
+        <h3>How our SSO works:</h3>
+        <ol>
+          <li>Click "Login with SSO" to be redirected to the authentication provider</li>
+          <li>Log in on the authentication provider</li>
+          <li>After successful login, you'll be redirected back to this application</li>
+          <li>You're now logged in and can access protected resources</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Application - Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ecf0f1;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 60px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 25px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 5px;
+      color: #555;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .btn {
+      padding: 10px;
+      background: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .btn:hover {
+      background: #2980b9;
+    }
+
+    .sso-btn {
+      background: #2ecc71;
+    }
+
+    .sso-btn:hover {
+      background: #27ae60;
+    }
+
+    .note {
+      text-align: center;
+      color: #888;
+      font-size: 14px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login to Your Account</h2>
+    <form action="/login" method="POST">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required />
+
+      <button type="submit" class="btn">Login</button>
+    </form>
+
+    <form action="/login" method="GET">
+      <button type="submit" class="btn sso-btn">Login with SSO</button>
+    </form>
+
+    <div class="note">
+      <p>Use your credentials or login with SSO.</p>
+    </div>
+  </div>
+</body>
+</html>

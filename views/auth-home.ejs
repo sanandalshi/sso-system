@@ -1,0 +1,280 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSO Provider - Home</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    .btn {
+      display: inline-block;
+      background: #3498db;
+      color: #fff;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>SSO Authentication Provider</h1>
+    
+    <% if (user) { %>
+      <p>You are currently logged in.</p>
+      <p>This server provides authentication services for client applications.</p>
+      <a href="/logout" class="btn">Logout</a>
+    <% } else { %>
+      <p>Welcome to the SSO Authentication Provider.</p>
+      <p>This server provides authentication services for client applications.</p>
+      <a href="/login" class="btn">Login</a>
+    <% } %>
+    
+    <div style="margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 5px;">
+      <h3>How SSO Works:</h3>
+      <ol>
+        <li>A client application redirects users here for authentication</li>
+        <li>Users authenticate on this server</li>
+        <li>After successful authentication, users are redirected back to the client application</li>
+        <li>The client application verifies authentication with this server</li>
+        <li>The user is now logged in on the client application</li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSO Provider - Home</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 900px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    /* Floating animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    h1 {
+      color: #00ffff;
+      text-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      position: relative;
+      animation: neonFlicker 2s infinite alternate;
+    }
+
+    @keyframes neonFlicker {
+      0% { opacity: 1; }
+      20% { opacity: 0.8; }
+      40% { opacity: 1; }
+      60% { opacity: 0.9; }
+      80% { opacity: 0.95; }
+      100% { opacity: 1; }
+    }
+
+    p {
+      color: #e0e0e0;
+      font-size: 1.1em;
+      margin: 15px 0;
+      opacity: 0;
+      animation: fadeIn 1s ease-out forwards;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background: linear-gradient(45deg, #00ffff, #00b7ff);
+      color: #1a1a2e;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+    }
+
+    .btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 255, 255, 0.6);
+    }
+
+    .info-box {
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      animation: slideIn 1s ease-out forwards;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-100px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .info-box h3 {
+      color: #00b7ff;
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px rgba(0, 183, 255, 0.5);
+    }
+
+    .info-box ol {
+      color: #e0e0e0;
+      padding-left: 25px;
+    }
+
+    .info-box li {
+      margin: 10px 0;
+      position: relative;
+      opacity: 0;
+      animation: listItemFade 0.5s ease-out forwards;
+    }
+
+    .info-box li:nth-child(1) { animation-delay: 1s; }
+    .info-box li:nth-child(2) { animation-delay: 1.2s; }
+    .info-box li:nth-child(3) { animation-delay: 1.4s; }
+    .info-box li:nth-child(4) { animation-delay: 1.6s; }
+    .info-box li:nth-child(5) { animation-delay: 1.8s; }
+
+    @keyframes listItemFade {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Background particles effect */
+    .particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(0, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: particleFloat 5s infinite linear;
+    }
+
+    @keyframes particleFloat {
+      0% { transform: translateY(0); opacity: 0.5; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="particles">
+      <div class="particle" style="left: 10%; width: 5px; height: 5px; animation-delay: 0s;"></div>
+      <div class="particle" style="left: 30%; width: 3px; height: 3px; animation-delay: 1s;"></div>
+      <div class="particle" style="left: 50%; width: 4px; height: 4px; animation-delay: 2s;"></div>
+      <div class="particle" style="left: 70%; width: 6px; height: 6px; animation-delay: 3s;"></div>
+      <div class="particle" style="left: 90%; width: 2px; height: 2px; animation-delay: 4s;"></div>
+    </div>
+    
+    <h1>SSO Authentication Provider</h1>
+    
+    <% if (user) { %>
+      <p>You are currently logged in.</p>
+      <p>This server provides authentication services for client applications.</p>
+      <a href="/logout" class="btn">Logout</a>
+    <% } else { %>
+      <p>Welcome to the SSO Authentication Provider.</p>
+      <p>This server provides authentication services for client applications.</p>
+      <a href="/login" class="btn">Login</a>
+    <% } %>
+    
+    <div class="info-box">
+      <h3>How SSO Works:</h3>
+      <ol>
+        <li>A client application redirects users here for authentication</li>
+        <li>Users authenticate on this server</li>
+        <li>After successful authentication, users are redirected back to the client application</li>
+        <li>The client application verifies authentication with this server</li>
+        <li>The user is now logged in on the client application</li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>
